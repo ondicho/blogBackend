@@ -1,0 +1,6 @@
+**/migrations/*
+*.pyc
+/*.pyc
+*/.pyc
+.env
+env
