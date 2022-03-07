@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 # Create your views here.
 
-@api_view(['GET','POST'])
+@api_view(['GET','POST','DELETE'])
 def blogView(request):
     if request.method=='GET':
         queryset=Post.objects.all()
@@ -21,3 +21,6 @@ def blogView(request):
             serializers.save()
             return Response(serializers.data,status=status.HTTP_201_CREATED)
         return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
+    elif(request.method == 'DELETE'):
+         Post.delete()
+         return Response(status=status.HTTP_204_NO_CONTENT)
